@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Geburtstagseinladung 🎉</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f7d9ff, #d6f0ff, #fff3d6);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #7a3cff;
+    }
+
+    hr {
+      margin: 20px 0;
+    }
+
+    form {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input, select, textarea, button {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      background: #7a3cff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #5b2bbd;
+    }
+
+    .small {
+      font-size: 12px;
+      color: #666;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>🎉 Geburtstagseinladung 🎉</h1>
+
+    <p>
+      Hey zusammen 👋<br><br>
+      ich werde am <span class="highlight">14. Juli</span> endlich <span class="highlight">18 Jahre alt</span> und möchte euch herzlich zu meiner Feier einladen!
+    </p>
+
+    <p>
+      🕒 Beginn: <span class="highlight">15:00 Uhr</span><br>
+      ☕ Es gibt Kaffee & Kuchen<br>
+      🎈 Danach einfach gemütlich feiern
+    </p>
+
+    <p>
+      Ich würde mich sehr freuen, wenn ihr dabei seid 😊
+    </p>
+
+    <hr>
+
+    <h3>Zu- oder Absage</h3>
+
+    <form onsubmit="sendWhatsApp(event)">
+
+      <input type="text" id="name" placeholder="Dein Name" required>
+
+      <select id="zusage" required>
+        <option value="">Bitte auswählen</option>
+        <option value="Ich komme 👍">Ich komme 👍</option>
+        <option value="Ich kann leider nicht 😢">Ich kann leider nicht 😢</option>
+      </select>
+
+      <textarea id="nachricht" placeholder="Zusätzliche Nachricht (optional)"></textarea>
+
+      <button type="submit">Per WhatsApp senden</button>
+
+    </form>
+
+    <div class="small">
+      Hinweis: Die Antwort wird direkt an WhatsApp gesendet.
+    </div>
+  </div>
+
+  <script>
+    function sendWhatsApp(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const zusage = document.getElementById("zusage").value;
+      const nachricht = document.getElementById("nachricht").value;
+
+      let text =
+        "Geburtstags-Rückmeldung 🎉%0A%0A" +
+        "Name: " + name + "%0A" +
+        "Antwort: " + zusage;
+
+      if (nachricht.trim() !== "") {
+        text += "%0A%0ABemerkung: " + nachricht;
+      }
+
+      const nummer = "491751170155";
+
+      const url = "https://wa.me/" + nummer + "?text=" + text;
+
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+</html>
