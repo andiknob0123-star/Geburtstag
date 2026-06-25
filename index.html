@@ -100,19 +100,46 @@
 
     <h3>Zu- oder Absage</h3>
 
-    <form onsubmit="event.preventDefault(); alert('Danke für deine Rückmeldung!');">
-      <input type="text" placeholder="Dein Name" required>
+    <<form onsubmit="sendWhatsApp(event)">
 
-      <select required>
-        <option value="">Bitte auswählen</option>
-        <option>Ich komme 👍</option>
-        <option>Ich kann leider nicht 😢</option>
-      </select>
+  <input type="text" id="name" placeholder="Dein Name" required>
 
-      <textarea placeholder="Nachricht (optional)"></textarea>
+  <select id="zusage" required>
+    <option value="">Bitte auswählen</option>
+    <option value="Ich komme 👍">Ich komme 👍</option>
+    <option value="Ich kann leider nicht 😢">Ich kann leider nicht 😢</option>
+  </select>
 
-      <button type="submit">Absenden</button>
-    </form>
+  <textarea id="nachricht" placeholder="Zusätzliche Nachricht (optional)"></textarea>
+
+  <button type="submit">Per WhatsApp senden</button>
+
+</form>
+
+<script>
+function sendWhatsApp(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const zusage = document.getElementById("zusage").value;
+  const nachricht = document.getElementById("nachricht").value;
+
+  let text =
+    "Geburtstags-Rückmeldung 🎉%0A%0A" +
+    "Name: " + name + "%0A" +
+    "Antwort: " + zusage;
+
+  if (nachricht.trim() !== "") {
+    text += "%0A%0ABemerkung: " + nachricht;
+  }
+
+  const nummer = "4915123456789"; // HIER DEINE NUMMER EINTRAGEN
+
+  const url = "https://wa.me/" + nummer + "?text=" + text;
+
+  window.open(url, "_blank");
+}
+</script>
 
     <div class="small">
       Hinweis: Dies ist eine einfache statische Seite (ohne Datenbank).
