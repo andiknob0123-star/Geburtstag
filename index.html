@@ -6,14 +6,33 @@
   <title>Geburtstagseinladung 🎉</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #f7d9ff, #d6f0ff, #fff3d6);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* schöner Party-Gradient */
+  background: linear-gradient(-45deg, #ffdde1, #ee9ca7, #c2e9fb, #a1c4fd);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+}
+
+/* sanfte Animation */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
     }
 
     .card {
