@@ -160,57 +160,20 @@ body {
       ☕ Kaffee & Kuchen<br>
       🎈 Danach gemütliches Beisammensein
     </p>
+<h3>Zu- oder Absage</h3>
 
-    <hr>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSeuIzuUByKLzAA1U6HbCI0FZGin-BuBq6I09Zj15Fcwx7O9fw/viewform?usp=header" target="_blank">
+  <button>Jetzt Zu-/Absagen</button>
+</a>
 
-    <h3>Zu- oder Absage</h3>
+<div class="small">
+  Du wirst zu einem kurzen Formular weitergeleitet
+</div>
+    <hr><iframe
+  src="DEIN_GOOGLE_FORM_LINK?embedded=true"
+  width="100%"
+  height="600"
+  style="border: none; border-radius: 12px;">
+</iframe>
 
-    <form onsubmit="sendWhatsApp(event)">
-
-      <input type="text" id="name" placeholder="Dein Name" required>
-
-      <select id="zusage" required>
-        <option value="">Bitte auswählen</option>
-        <option value="Ich komme 👍">Ich komme 👍</option>
-        <option value="Ich kann leider nicht 😢">Ich kann leider nicht 😢</option>
-      </select>
-
-      <textarea id="nachricht" placeholder="Nachricht (optional)"></textarea>
-
-      <button type="submit">Über WhatsApp senden</button>
-
-    </form>
-
-    <div class="small">
-      Antwort wird direkt an WhatsApp gesendet
-    </div>
-
-  </div>
-
-  <script>
-    function sendWhatsApp(event) {
-      event.preventDefault();
-
-      const name = document.getElementById("name").value;
-      const zusage = document.getElementById("zusage").value;
-      const nachricht = document.getElementById("nachricht").value;
-
-      let text =
-        "🎉 Geburtstags-Rückmeldung%0A%0A" +
-        "Name: " + name + "%0A" +
-        "Antwort: " + zusage;
-
-      if (nachricht.trim() !== "") {
-        text += "%0A%0ABemerkung: " + nachricht;
-      }
-
-      const nummer = "491751170155";
-
-      const url = "https://wa.me/" + nummer + "?text=" + text;
-
-      window.open(url, "_blank");
-    }
-  </script>
-
-</body>
-</html>
+    
